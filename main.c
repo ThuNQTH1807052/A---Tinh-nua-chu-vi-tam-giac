@@ -13,7 +13,7 @@ int main() {
     scanf("%d", &b);
     printf("Nhap so do canh thu ba:");
     scanf("%d", &c);
-    if (a, b, c != 0){
+    if (a > 0 && b > 0 && c > 0){
         if ((a+b>c)|| (a+c>b)||(b+c>a)) {
             printf("Nua chu vi cua tam giac la %2.f", tinhNuaChuViTamGiac(a, b, c));
         }
