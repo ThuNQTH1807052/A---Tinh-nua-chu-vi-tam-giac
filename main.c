@@ -1,28 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <bootstrap.h>
 
-float tinhNuaChuViTamGiac(int a, int b, int c){
-    return (float) (a + b + c) / 2;
-}
-int main() {
-
-    int a, b, c;
-    printf("Nhap so do canh thu nhat: ");
-    scanf("%d", &a);
-    printf("Nhap so do canh thu hai: ");
-    scanf("%d", &b);
-    printf("Nhap so do canh thu ba: ");
-    scanf("%d", &c);
-    if (a > 0 && b > 0 && c > 0){
-        if ((a+b>c) && (a+c>b) && (b+c>a)) {
-            printf("Nua chu vi cua tam giac la %.2f", tinhNuaChuViTamGiac(a, b, c));
-        }
-        else {
-            printf("Tong hai canh cua mot tam giac luon phai lon hon canh con lai.\n");
-            }
+//Hàm kiểm tra độ dài 3 cạnh của tam giác (tính hợp lệnh của dữ liệu)
+bool validateData(int a, int b, int c){
+    if (a <=0 || b <=0 || c <= 0){
+        printf ("Do dai mot canh cua tam giac phai lon hon 0");
+        return false;
+    } else if (a + b <= c || a + c <= b || b + c <= a){
+        printf("Tong do dai hai canh cua mot tam giac phai lon hon canh con lai.");
+        return false;
     }
-    else{
-        printf("Do dai mot canh tam giac khong the nho hon hoac bang 0.\n");
+    return true;
+}
+
+//Hàm tính nửa chu vi tam giác
+float calculatehaftofP(int a, int b, int c){
+    return (float)(a + b + c) / 2;
+}
+
+int main() {
+    int a, b, c;
+    printf("Vui long nhap do dai canh thu nhat: \n");
+    scanf("%d", &a);
+    printf("Vui long nhap do dai canh thu hai: \n");
+    scanf("%d", &b);
+    printf("Vui long nhap do dai canh thu ba: \n");
+    scanf("%d", &c);
+    if (validateData(a, b, c)){
+        printf("Nua chu vi tam giac la: %.2f", calculatehaftofP(a, b, c));
     }
     return 0;
 }
